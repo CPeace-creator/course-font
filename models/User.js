@@ -26,17 +26,19 @@ const User = sequelize.define('User', {
   createAt: {
     type: DataTypes.DATE,
     field: 'create_at',
-    allowNull: true
+    allowNull: true,
+    defaultValue: DataTypes.NOW
   },
   updateAt: {
     type: DataTypes.DATE,
     field: 'update_at',
-    allowNull: true
+    allowNull: true,
+    defaultValue: DataTypes.NOW
   },
   ifDel: {
     type: DataTypes.INTEGER,
     defaultValue: 0,
-    field: 'updateAt',
+    field: 'if_del',
     allowNull: true
   }
 }, {

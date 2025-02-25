@@ -1,32 +1,23 @@
-class ResponseResult {
-    constructor() {
-        this.result = {
+const ResponseResult = {
+    success(data) {
+        return {
             success: true,
             code: 200,
-            data: null
+            data: data
         };
-    }
+    },
 
-    static success(data) {
-        const instance = new ResponseResult();
-        instance.result.data = data;
-        return instance;
-    }
+    error(code = 500, message) {
+        return {
+            success: false,
+            code: code,
+            message: message
+        };
+    },
 
-    static error(code = 500, message) {
-        const instance = new ResponseResult();
-        instance.result.success = false;
-        instance.result.code = code;
-        instance.result.message = message;
-        return instance;
+    send(res, result) {
+        return res.status(result.code).json(result);
     }
+};
 
-    setCode(code) {
-        this.result.code = code;
-        return this;
-    }
-
-    send(res) {
-        return res.status(this.result.code).json(this.result);
-    }
-}
+module.exports = ResponseResult;
