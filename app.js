@@ -45,9 +45,9 @@ app.use(function(err, req, res, next) {
 });
 
 // 从 .env 文件中获取端口号
-const PORT = process.env.PORT || 8080; // 默认端口为 8080
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// const PORT = process.env.PORT || 8080; // 默认端口为 8080
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
 
 module.exports = app;

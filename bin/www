@@ -92,10 +92,10 @@ function onListening() {
 }
 
 // 同步数据库
-sequelize.sync({ alter: true })
-  .then(() => {
-    console.log('Database & tables created!');
-  })
-  .catch(err => {
-    console.error('Error syncing database:', err);
-  });
+// sequelize.sync({ alter: true })
+//   .then(() => {
+//     console.log('Database & tables created!');
+//   })
+//   .catch(err => {
+//     console.error('Error syncing database:', err);
+//   });
