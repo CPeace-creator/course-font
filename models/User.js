@@ -22,6 +22,22 @@ const User = sequelize.define('User', {
   password: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  createAt: {
+    type: DataTypes.DATE,
+    field: 'create_at',
+    allowNull: true
+  },
+  updateAt: {
+    type: DataTypes.DATE,
+    field: 'update_at',
+    allowNull: true
+  },
+  ifDel: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+    field: 'updateAt',
+    allowNull: true
   }
 }, {
   timestamps: false // 不生成 createdAt 和 updatedAt 字段
