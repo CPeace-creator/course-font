@@ -24,7 +24,8 @@ const User = sequelize.define('User', {
     updatedAt: {
         type: DataTypes.DATE,
         field: 'update_at',
-        allowNull: true
+        allowNull: true,
+        defaultValue: DataTypes.NOW
     },
     ifDel: {
         type: DataTypes.INTEGER,
