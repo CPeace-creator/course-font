@@ -8,17 +8,23 @@ const User = sequelize.define('User', {
     primaryKey: true,
     autoIncrement: true
   },
-  name: {
+  userName: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    field:'user_name',
+    unique: true
   },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
 }, {
   timestamps: false // 不生成 createdAt 和 updatedAt 字段
 });
 
-module.exports = User; 
+module.exports = User;
