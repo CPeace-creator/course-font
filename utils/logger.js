@@ -1,19 +1,31 @@
 const winston = require('winston');
+const path = require('path');
+
+// 获取项目根目录
+const rootDir = path.resolve(__dirname, '..');
 
 // 创建日志实例
 const logger = winston.createLogger({
-    level: 'info',  // 默认日志级别
+    level: 'info',
     format: winston.format.combine(
-        winston.format.colorize(),  // 使日志带有颜色
-        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), // 时间戳
+        winston.format.colorize(),
+        winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
         winston.format.printf(({ timestamp, level, message }) => {
             return `${timestamp} [${level}]: ${message}`;
         })
     ),
     transports: [
-        new winston.transports.Console(),  // 输出到控制台
-        new winston.transports.File({ filename: 'error.log', level: 'error' })  // 错误日志保存到文件
+        new winston.transports.Console(),
+        new winston.transports.File({
+            filename: path.join(rootDir, 'logs', 'error.log'),
+            level: 'error'
+        })
     ],
 });
+const fs = require('fs');
+const logDir = path.join(rootDir, 'logs');
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir, { recursive: true });
+}
 
 module.exports = logger;
