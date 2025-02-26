@@ -42,7 +42,8 @@ const User = sequelize.define('User', {
     allowNull: true
   }
 }, {
-  timestamps: false // 不生成 createdAt 和 updatedAt 字段
+  timestamps: false, // 不生成 createdAt 和 updatedAt 字段
+  freezeTableName:true,//强制表名称等于模型名称
 });
 
 module.exports = User;
