@@ -25,3 +25,10 @@ exports.addUser = async (req, res) => {
         return ResponseResult.send(res, ResponseResult.error(500, error.message));
     }
 };
+
+//头像上传
+exports.uploadAvatar=async (req,res)=>{
+    const {avatar} =  req.body;
+    const data=await User.update({avatar:avatar},{where:{id:req.user.UserId}})
+    return ResponseResult.send(res,ResponseResult.success(data))
+}

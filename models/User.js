@@ -40,6 +40,10 @@ const User = sequelize.define('User', {
     defaultValue: 0,
     field: 'if_del',
     allowNull: true
+  },
+  avatar: {
+    type: DataTypes.STRING,
+    allowNull: true
   }
 }, {
   timestamps: false, // 不生成 createdAt 和 updatedAt 字段
